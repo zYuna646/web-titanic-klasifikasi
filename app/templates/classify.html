@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classify Passenger</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007BFF;
+        }
+
+        .form-container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .form-container input[type="number"] {
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Klasifikasi Passenger</h1>
+    <div class="form-container">
+        <form action="/classify" method="post">
+            <label for="pclass">Pclass:</label>
+            <input type="number" name="pclass" required>
+
+            <label for="sex">Sex:</label>
+            <input type="radio" name="sex" value="male" required> Male
+            <input type="radio" name="sex" value="female" required> Female
+            
+            <label for="age">Age:</label>
+            <input type="number" name="age" step="0.01" required>
+            
+            <label for="sibsp">SibSp:</label>
+            <input type="number" name="sibsp" required>
+            
+            <label for="parch">Parch:</label>
+            <input type="number" name="parch" required>
+            
+            <label for="fare">Fare:</label>
+            <input type="number" name="fare" step="0.01" required>
+            
+            <input type="submit" value="Classify">
+        </form>
+
+        {% if result %}
+        <div class="result">
+            Hasil Klasifikasi: {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
